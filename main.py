@@ -1,4 +1,4 @@
-# https://www.youtube.com/watch?v=6iCP0EpRWFg&ab_channel=Suedew
+# https://www.youtube.com/watch?v=6iCP0EpRWFg&ab_channel=Suedew Credits to Suedew
 
 users = {}
 
