@@ -10,14 +10,9 @@ def new_user():
         print("Username already taken")
     else:
         create_pw = input("Create password: ")
-        users[create_user] = create_pw
+        users[create_user] = create_pw  # assign value(password) to key(username)
         print("--Account created--\n")
-
-        prompt = input("Press \"y\" to proceed login, \"n\" to return main menu:\n")
-        if prompt == "y":
-            old_user()
-        elif prompt == "n":
-            main_menu()
+        cue()
 
 
 def old_user():
@@ -30,34 +25,29 @@ def old_user():
         if username in users and users[username] == passw:
             correct_credentials = True
             print("--Login Successful--\n")
-
-            # prompt = input("Press \"y\" to exit, \"n\" to return main menu:\n")
-            # if prompt == "y":
-            #     exit()
-            # elif prompt == "n":
-            #     main_menu()
-
         else:
-            print("--Invalid username or password--\nPlease Try again:\n")
+            print("--Invalid username/password--\nPlease try again:\n")
 
 
 def change_pw():
-    username = input("Enter username: ")
+    valid_user = False
 
-    if username in users:
-        password = input("Enter old password:")
+    while not valid_user:
+        username = input("Enter username: ")
+        if username in users:
+            password = input("Enter old password:")
 
-        if password == users[username]:
-            npassword = input("Enter New password: ")
-            users[username] = npassword
-            print("Password successfully changed!")
+            if password == users[username]:
+                npassword = input("Enter New password: ")
+                users[username] = npassword
+                valid_user = True
+                print("Password successfully changed!")
+                cue()
+            else:
+                print("--Incorrect password--")
+
         else:
-            print("Incorrect password")
-
-    else:
-        print("--Username does not exist--")
-        # print("--Username does not exist--\nPlease try again\n")
-        # change_pw()
+            print("--Username does not exist--")
 
 
 def main_menu():
@@ -70,6 +60,14 @@ def main_menu():
         change_pw()
     else:
         print("Invalid input!")
+
+
+def cue():
+    prompt = input("Press \"y\" to proceed login, \"n\" to return main menu:\n")
+    if prompt == "y":
+        old_user()
+    elif prompt == "n":
+        main_menu()
 
 
 main_menu()
